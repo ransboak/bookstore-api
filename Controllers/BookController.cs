@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using bookStore.Dtos.Book;
 using bookStore.Interfaces;
 using bookStore.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,13 @@ namespace bookStore.Controllers
             }
 
             return Ok(book.ToBookDto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateBookDto bookDto){
+            var bookModel = await _bookRepo.CreateAsync(bookDto);
+
+            return CreatedAtAction(nameof(GetById), new {id = bookModel.Id}, bookModel.ToBookDto());
         }
     }
 }

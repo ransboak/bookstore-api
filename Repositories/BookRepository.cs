@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using bookStore.Data;
 using bookStore.Dtos.Book;
 using bookStore.Interfaces;
+using bookStore.Mappers;
 using bookStore.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,9 +19,14 @@ namespace bookStore.Repositories
         {
             _context = context;
         }
-        public Task<Book> CreateAsync(CreateBookDto bookDto)
+        public async Task<Book> CreateAsync(CreateBookDto bookDto)
         {
-            throw new NotImplementedException();
+            var bookModel = bookDto.ToBookFromCreateDto();
+            await _context.Books.AddAsync(bookModel);
+            await _context.SaveChangesAsync();
+
+            return bookModel;
+
         }
 
         public Task<Book?> DeleteAsync(int id)
