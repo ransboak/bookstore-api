@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {}
+    "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {
+    "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+        "projectUniqueName": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
         "projectName": "bookStore",
-        "projectPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+        "projectPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\obj\\",
+        "outputPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,9 +45,37 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
