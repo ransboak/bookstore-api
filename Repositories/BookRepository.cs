@@ -30,12 +30,18 @@ namespace bookStore.Repositories
 
         public async Task<List<Book>> GetAllAsync()
         {
-            return await _context.Books.ToListAsync();
+            return await _context.Books.Include(c => c.Comments).ToListAsync();
         }
 
-        public Task<Book?> GetByIdAsync(int id)
+        public async Task<Book?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var book = await _context.Books.Include(c => c.Comments).FirstOrDefaultAsync(x => x.Id == id);
+
+            if(book == null){
+                return null;
+            }
+
+            return book;
         }
 
         public Task<Book?> UpdateAsync(int id, UpdateBookDto bookDto)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using bookStore.Interfaces;
+using bookStore.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bookStore.Controllers
@@ -21,7 +22,20 @@ namespace bookStore.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(){
             var books = await _bookRepo.GetAllAsync();
-            return Ok(books);
+
+            var bookDto = books.Select(s => s.ToBookDto());
+            return Ok(bookDto);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id){
+            var book = await _bookRepo.GetByIdAsync(id);
+
+            if(book == null){
+                return NotFound();
+            }
+
+            return Ok(book.ToBookDto());
         }
     }
 }
