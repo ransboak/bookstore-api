@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {}
+    "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {}
   },
   "projects": {
-    "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {
+    "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
         "projectName": "bookStore",
-        "projectPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+        "projectPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
