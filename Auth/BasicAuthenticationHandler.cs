@@ -52,7 +52,7 @@ namespace bookStore.Auth
         var username = credentials[0];
         var password = credentials[1];
         
-        if (username != "test@fake.com" && password != "subscribe")
+        if (username != "test@fake.com" && password != "GGG")
         {
             return AuthenticateResult.Fail("Authentication failed");
         }
