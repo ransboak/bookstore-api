@@ -6,6 +6,7 @@ using bookStore.Dtos.Book;
 using bookStore.Helpers;
 using bookStore.Interfaces;
 using bookStore.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bookStore.Controllers
@@ -22,6 +23,7 @@ namespace bookStore.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var books = await _bookRepo.GetAllAsync();

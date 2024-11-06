@@ -71,9 +71,11 @@ namespace bookStore.Repositories
 
             if(query.isDescending){
                 books = books.OrderByDescending(s => s.Title);
+            
             }
+            var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
-            return await books.ToListAsync();
+            return await books.Skip(skipNumber).Take(query.PageSize).ToListAsync();
         }
 
         public async Task<Book?> UpdateAsync(int id, UpdateBookDto bookDto)
