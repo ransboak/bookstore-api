@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using bookStore.Dtos.Book;
+using bookStore.Helpers;
 using bookStore.Interfaces;
 using bookStore.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,16 @@ namespace bookStore.Controllers
         public async Task<IActionResult> GetAll()
         {
             var books = await _bookRepo.GetAllAsync();
+
+            var bookDto = books.Select(s => s.ToBookDto());
+
+            return Ok(bookDto);
+        }
+
+        [HttpGet("query")]
+        public async Task<IActionResult> GetByQuery([FromQuery] BookQueryObject query)
+        {
+            var books = await _bookRepo.GetByQueryAsync(query);
 
             var bookDto = books.Select(s => s.ToBookDto());
 

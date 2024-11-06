@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using bookStore.Data;
 using bookStore.Dtos.Book;
+using bookStore.Helpers;
 using bookStore.Interfaces;
 using bookStore.Mappers;
 using bookStore.Models;
@@ -58,6 +59,21 @@ namespace bookStore.Repositories
             }
 
             return book;
+        }
+
+        public async Task<List<Book>> GetByQueryAsync(BookQueryObject query)
+        {
+            var books =  _context.Books.Include(c => c.Comments).AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(query.Title)){
+                books = books.Where(s => s.Title.Contains(query.Title));
+            }
+
+            if(query.isDescending){
+                books = books.OrderByDescending(s => s.Title);
+            }
+
+            return await books.ToListAsync();
         }
 
         public async Task<Book?> UpdateAsync(int id, UpdateBookDto bookDto)
