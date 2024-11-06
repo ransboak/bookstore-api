@@ -61,10 +61,8 @@ namespace bookStore.Repositories
 
             if(existingComment == null) return null;
 
-            // existingComment.Title = commentModel.Title ?? existingComment.Title;
             existingComment.Title = !string.IsNullOrWhiteSpace(commentModel.Title) ? commentModel.Title : existingComment.Title;
             existingComment.Content = !string.IsNullOrWhiteSpace(commentModel.Content) ? commentModel.Content : existingComment.Content;
-            // existingComment.Content = commentModel.Content ?? existingComment.Content;
 
             await _context.SaveChangesAsync();
 
