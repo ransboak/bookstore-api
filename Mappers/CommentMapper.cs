@@ -17,7 +17,15 @@ namespace bookStore.Mappers
                 Content = commentModel.Content
             };
         }
-        public static Comment ToCommentFromCreateDto(this CreateCommentDto commentDto)
+        public static Comment ToCommentFromCreateDto(this CreateCommentDto commentDto, int BookId)
+        {
+            return new Comment{
+                Title = commentDto.Title,
+                Content = commentDto.Content,
+                BookId = BookId
+            };
+        }
+        public static Comment ToCommentFromUpdateDto(this UpdateCommentDto commentDto)
         {
             return new Comment{
                 Title = commentDto.Title,

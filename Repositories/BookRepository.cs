@@ -29,9 +29,19 @@ namespace bookStore.Repositories
 
         }
 
-        public Task<Book?> DeleteAsync(int id)
+        public async Task<Book?> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(book == null){
+                return null;
+            }
+
+            _context.Books.Remove(book);
+
+            await _context.SaveChangesAsync();
+
+            return book;
         }
 
         public async Task<List<Book>> GetAllAsync()
@@ -59,9 +69,14 @@ namespace bookStore.Repositories
             }
             var bookModel = bookDto.ToBookFromUpdateDto();
 
-            existingBook.Title = bookModel.Title;
-            existingBook.Author = bookModel.Author;
-            existingBook.CategoryId = bookModel.CategoryId;
+            existingBook.Title = !string.IsNullOrWhiteSpace(bookModel.Title) ? bookModel.Title : existingBook.Title;
+            existingBook.Author = !string.IsNullOrWhiteSpace(bookModel.Author) ? bookModel.Author : existingBook.Author;
+            existingBook.CategoryId = bookModel.CategoryId.HasValue ? bookModel.CategoryId.Value : existingBook.CategoryId;
+            // existingBook.DatePublished = !string.IsNullOrWhiteSpace(bookModel.DatePublished) ? bookModel.DatePublished : bookModel.DatePublished;
+
+            // existingBook.Title = bookModel.Title;
+            // existingBook.Author = bookModel.Author;
+            // existingBook.CategoryId = bookModel.CategoryId;
             existingBook.DatePublished = bookModel.DatePublished;
 
             await _context.SaveChangesAsync();
