@@ -27,5 +27,13 @@ namespace bookStore.Mappers
                 CategoryId = bookDto.CategoryId,
             };
         }
+        public static Book ToBookFromUpdateDto(this UpdateBookDto bookDto){
+            return new Book{
+                Title = bookDto.Title,
+                Author = bookDto.Author,
+                DatePublished = bookDto.DatePublished,
+                CategoryId = bookDto.CategoryId,
+            };
+        }
     }
 }

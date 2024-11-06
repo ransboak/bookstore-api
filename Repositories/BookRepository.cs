@@ -50,9 +50,23 @@ namespace bookStore.Repositories
             return book;
         }
 
-        public Task<Book?> UpdateAsync(int id, UpdateBookDto bookDto)
+        public async Task<Book?> UpdateAsync(int id, UpdateBookDto bookDto)
         {
-            throw new NotImplementedException();
+            var existingBook = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(existingBook == null){
+                return null;
+            }
+            var bookModel = bookDto.ToBookFromUpdateDto();
+
+            existingBook.Title = bookModel.Title;
+            existingBook.Author = bookModel.Author;
+            existingBook.CategoryId = bookModel.CategoryId;
+            existingBook.DatePublished = bookModel.DatePublished;
+
+            await _context.SaveChangesAsync();
+
+            return existingBook;
         }
     }
 }

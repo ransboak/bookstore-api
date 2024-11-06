@@ -9,7 +9,9 @@ namespace bookStore.Dtos.Book
     {
         public string Title { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
+
         public DateOnly DatePublished { get; set; }
+        public int? CategoryId { get; set; }
 
     }
 }
