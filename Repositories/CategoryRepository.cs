@@ -51,7 +51,7 @@ namespace bookStore.Repositories
 
         public async Task<Category?> GetByIdAsync(int id)
         {
-            var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            var category = await _context.Categories.Include(c => c.Books).FirstOrDefaultAsync(x => x.Id == id);
 
             if (category == null) return null;
 
