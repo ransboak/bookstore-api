@@ -3,6 +3,7 @@ using bookStore.Data;
 using bookStore.Interfaces;
 using bookStore.Repositories;
 using bookStore2.Interfaces;
+using bookStore2.Middlewares;
 using bookStore2.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
@@ -68,7 +69,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<IPWhitelistMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 
