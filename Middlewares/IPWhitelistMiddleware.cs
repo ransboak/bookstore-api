@@ -36,7 +36,7 @@ namespace bookStore2.Middlewares
                 {
                     _logger.LogWarning($"Unauthorized access attempt from IP: {ipAddress}");
                     context.Response.StatusCode = StatusCodes.Status403Forbidden;
-                    await context.Response.WriteAsync("Forbidden: Your IP address is not authorized.");
+                    await context.Response.WriteAsync("Forbidden: Unauthorized.");
                     return;
                 }
             }
