@@ -4672,11 +4672,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore2\\bookStore.csproj",
       "projectName": "bookStore",
-      "projectPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\bookStore.csproj",
+      "projectPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore2\\bookStore.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\HP\\Documents\\Dotnet\\bookStore\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\Dotnet\\bookStore2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

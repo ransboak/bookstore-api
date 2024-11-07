@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using bookStore2.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 
@@ -12,14 +13,16 @@ namespace bookStore.Auth
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
+        private readonly IUserRepository _userRepo;
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options, 
         ILoggerFactory logger, 
-        UrlEncoder encoder, 
+        UrlEncoder encoder,
+        IUserRepository userRepo,
         ISystemClock clock) 
         : base(options, logger, encoder, clock
         ){
-
+            _userRepo = userRepo;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -52,10 +55,17 @@ namespace bookStore.Auth
         var username = credentials[0];
         var password = credentials[1];
         
-        if (username != "test@fake.com" && password != "GGG")
-        {
-            return AuthenticateResult.Fail("Authentication failed");
-        }
+        // if (username != "ransboak@gmail.com" && password != "Admin12345#")
+        // {
+        //     return AuthenticateResult.Fail("Authentication failed");
+        // }
+        var user = await _userRepo.ValidateUser(username, password);
+
+        if (user == null)
+            {
+                // Check if user is not found or invalid credentials
+                return AuthenticateResult.Fail("Unauthorized");
+            }
         
         var claims = new[]
         {

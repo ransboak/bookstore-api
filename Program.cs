@@ -2,6 +2,8 @@ using bookStore.Auth;
 using bookStore.Data;
 using bookStore.Interfaces;
 using bookStore.Repositories;
+using bookStore2.Interfaces;
+using bookStore2.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -56,6 +58,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
